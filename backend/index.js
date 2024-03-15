@@ -4,6 +4,14 @@ const app = express()
 const dotenv = require("dotenv")
 const mongoose = require("mongoose")
 
+// app.use(cors(
+//   {
+//       origin: ["https://recipehub-fe.vercel.app"],
+//       methods: ["POST", "GET", "PUT"],
+//       credentials: true
+//   }
+// ));
+
 //---- step : 3
 const multer = require("multer")
 const path = require("path")
@@ -52,6 +60,10 @@ app.use("/auth", authRoute)
 app.use("/users", authUser)
 app.use("/posts", authPost)
 app.use("/category", authCat)
+
+app.get('/', (req, res)=>{
+  res.send("Hello");
+})
 
 //---- step : 1.2
 app.listen("5000", () => {
